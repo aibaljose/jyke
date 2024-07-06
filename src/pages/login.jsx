@@ -63,7 +63,7 @@ const Login = () => {
 
         <p className="signup-link">
           Don't Have an account?
-          <a href="#" className="signup-link link" onClick={nav}>SignUp</a>
+          <a href="#" className="signup-link link" ><p onClick={nav}>SignUp</p></a>
         </p>
       </div>
 
