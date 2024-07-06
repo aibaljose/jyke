@@ -20,6 +20,10 @@ const Login = () => {
     }
   };
 
+  const nav=()=>{
+    navigate('/signup')
+  }
+
   return (
     <div className='centerdiv'>
 
@@ -59,7 +63,7 @@ const Login = () => {
 
         <p className="signup-link">
           Don't Have an account?
-          <a href="#" className="signup-link link">SignUp</a>
+          <a href="#" className="signup-link link" onClick={nav}>SignUp</a>
         </p>
       </div>
 
