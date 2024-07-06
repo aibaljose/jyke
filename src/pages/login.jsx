@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link  } from 'react-router-dom';
 import Logo from "./css/logo.png"
 
 const Login = () => {
@@ -63,7 +63,8 @@ const Login = () => {
 
         <p className="signup-link">
           Don't Have an account?
-          <a href="#" className="signup-link link" ><p onClick={nav}>SignUp</p></a>
+          <Link to="/signup"><a href="#" className="signup-link link" ><p>SignUp</p></a></Link>
+          
         </p>
       </div>
 
