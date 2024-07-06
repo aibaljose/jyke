@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { auth, firestore } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import "./css/signup.css"
 import Logo from "./css/logo.png"
 
@@ -11,6 +11,9 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [course, setCourse] = useState('');
+    const [number, setnumber] = useState();
+    const [date, setdate] = useState();
+    const [addr, setaddr] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -21,7 +24,10 @@ const SignUp = () => {
             await setDoc(doc(firestore, 'users', user.uid), {
                 name,
                 email,
-                course
+                course,
+                number,
+                date,
+                addr
             });
             navigate('/main');
         } catch (error) {
@@ -33,27 +39,39 @@ const SignUp = () => {
         <div className='centerdiv'>
             <div className="form-container">
                 <div className="logo-container">
-             
-                <div className="bgimg">
-                <img src={Logo} alt="" height="40px" />
-                
-                </div>
-                Jesus Youth KE College
-                
 
-                <p className='titleh'>JAM</p>
-                <p>JESUS AND ME</p>
-                <br></br>
-                <p className='so'>Registration Form</p>
+                    <div className="bgimg">
+                        <img src={Logo} alt="" height="40px" />
+
+                    </div>
+                    Jesus Youth KE College
+
+
+                    <p className='titleh'>JAM</p>
+                    <p>JESUS AND ME</p>
+                    <br></br>
+                    <p className='so'>Registration Form</p>
                 </div>
-                
+
 
                 <form className="form" onSubmit={handleSignUp}>
                     <div className="form-group">
 
-                        <input type="text" id="email" name="email" placeholder="Enter your Name" value={name}
+                        <input type="text" id="name" name="name" placeholder="Enter your Name" value={name}
                             onChange={(e) => setName(e.target.value)} required="" />
                     </div>
+                    <div className="form-group">
+
+                        <input type="number" id="number" name="number" value={number}
+                            onChange={(e) => setnumber(e.target.value)} placeholder="whatspp/phno" required="" />
+                    </div>Date of birth
+                    <div className="form-group">
+
+                        <input type="date" id="number" name="number" value={date} 
+                         onChange={(e) => setdate(e.target.value)} placeholder="Date of birth" required="" />
+                    </div>
+
+
                     <div className="form-group">
 
                         <input type="text" id="email" name="email" value={email}
@@ -67,16 +85,23 @@ const SignUp = () => {
                     <div className="form-group">
 
                         <input type="text" id="course" value={course}
-                            onChange={(e) => setCourse(e.target.value)} name="course" placeholder="Enter your Course" required="" />
+                            onChange={(e) => setCourse(e.target.value)} name="course" placeholder="Enter your Department" required="" />
+                    </div>
+                    <div className="form-group">
+
+                        <input type="text" id="addr" name="addr" value={addr}
+                            onChange={(e) => setaddr(e.target.value)} placeholder="Address" required="" />
                     </div>
 
                     <button className="form-submit-btn" type="submit">Register</button>
                 </form>
-
+                <Link to="/login">
                 <p className="signup-link">
                     Have an account?
-                    <a href="#" className="signup-link link">Login</a>
+                    Login
                 </p>
+                </Link>
+               
             </div>
 
 

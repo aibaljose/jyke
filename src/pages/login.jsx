@@ -60,12 +60,13 @@ const Login = () => {
 
           <button className="form-submit-btn" type="submit">Login</button>
         </form>
-
+        <Link to="/signup">
         <p className="signup-link">
           Don't Have an account?
-          <Link to="/signup"><p className="signup-link link">SignUp</p></Link>
+          SignUp
           
         </p>
+        </Link>
       </div>
 
 
